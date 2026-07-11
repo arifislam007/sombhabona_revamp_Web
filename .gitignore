@@ -1,0 +1,16 @@
+# env files (never commit real secrets)
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# editor/tooling local state
+.claude/
+
+# dependency / build artifacts (also ignored per-package, kept here as a safety net)
+node_modules/
+.next/
+/lib/generated/prisma
+
+# OS
+.DS_Store

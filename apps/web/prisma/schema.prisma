@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model VolunteerApplication {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String
+  skill     String
+  message   String?
+  createdAt DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+enum DonationMethod {
+  BKASH
+  BANK
+  ZAKAT
+}
+
+enum DonationStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+model Donation {
+  id             String         @id @default(cuid())
+  donorName      String
+  email          String?
+  phone          String?
+  amount         Int
+  recurring      Boolean        @default(false)
+  method         DonationMethod
+  status         DonationStatus @default(PENDING)
+  bkashPaymentId String?        @unique
+  bkashTrxId     String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
