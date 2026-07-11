@@ -15,7 +15,7 @@ services:
 
   nginx:
     ports:
-      - "${HTTP_PORT:-8080}:80"
+      - "${HTTP_PORT:-6085}:80"
 
   adminer:
     image: adminer
@@ -23,4 +23,4 @@ services:
     depends_on:
       - db
     ports:
-      - "8081:8080"
+      - "6086:8080"

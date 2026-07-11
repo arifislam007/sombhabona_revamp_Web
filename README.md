@@ -49,9 +49,9 @@ docker compose up -d --build
 This starts:
 - `db` — Postgres 16, with a named volume for persistence
 - `web` — Next.js app (runs `prisma migrate deploy` automatically on container start, then `node server.js`)
-- `nginx` — reverse proxy on port 80 (override with `HTTP_PORT`)
+- `nginx` — reverse proxy on port 6085 (override with `HTTP_PORT`)
 
-Visit `http://localhost`.
+Visit `http://localhost:6085`.
 
 ### Development overrides
 
@@ -61,7 +61,7 @@ Visit `http://localhost`.
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 ```
 
-Adminer will be available at `http://localhost:8081` (system: PostgreSQL, server: `db`).
+Adminer will be available at `http://localhost:6086` (system: PostgreSQL, server: `db`).
 
 ## Environment variables
 
