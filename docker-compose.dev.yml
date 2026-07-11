@@ -1,0 +1,26 @@
+services:
+  web:
+    build:
+      context: ./apps/web
+      target: builder
+    command: sh -c "npx prisma migrate deploy && npm run dev"
+    volumes:
+      - ./apps/web:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+
+  nginx:
+    ports:
+      - "${HTTP_PORT:-8080}:80"
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "8081:8080"
