@@ -17,7 +17,7 @@ export const siteConfig = {
     womenTrainedTailoring: 160,
   },
   contact: {
-    address: "House no. 40, Road-33, Block: E, Mirpur-12, Dhaka-1216, Bangladesh",
+    address: "756 (4th Floor), West Sewrapara, Mirpur, Dhaka",
     phones: ["+8801737243447", "+8801627565608"],
     emails: ["info@sombhabona.org", "sombhabona@gmail.com"],
     whatsapp: "https://wa.me/8801627565608",
