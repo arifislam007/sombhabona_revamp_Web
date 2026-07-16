@@ -6,6 +6,7 @@ import type { Dict } from "@/lib/i18n";
 import { useFormSubmit } from "@/lib/use-form-submit";
 import { siteConfig } from "@/content/site";
 import { FacebookIcon } from "@/components/icons/facebook-icon";
+import { SectionHeading } from "@/components/section-heading";
 
 export function Contact({ t }: { t: Dict }) {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -24,12 +25,7 @@ export function Contact({ t }: { t: Dict }) {
   return (
     <section id="contact" className="py-20 lg:py-28 bg-white dark:bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-            {t.contact.label}
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">{t.contact.title}</h2>
-        </div>
+        <SectionHeading eyebrow={t.contact.label} title={t.contact.title} size="sm" className="mb-14" />
 
         <div className="grid lg:grid-cols-5 gap-12">
           <div className="lg:col-span-2 space-y-6">
@@ -50,7 +46,8 @@ export function Contact({ t }: { t: Dict }) {
                 href={siteConfig.contact.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground hover:bg-blue-600 hover:text-white transition-colors border border-border"
+                aria-label="Sombhabona on Facebook (opens in a new tab)"
+                className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground hover:bg-blue-600 hover:text-white transition-colors border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 <FacebookIcon size={16} />
               </a>
@@ -58,9 +55,10 @@ export function Contact({ t }: { t: Dict }) {
                 href={siteConfig.contact.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground hover:bg-green-500 hover:text-white transition-colors border border-border"
+                aria-label="Chat with Sombhabona on WhatsApp (opens in a new tab)"
+                className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground hover:bg-green-500 hover:text-white transition-colors border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
-                <MessageCircle size={16} />
+                <MessageCircle size={16} aria-hidden="true" />
               </a>
             </div>
 
@@ -80,8 +78,8 @@ export function Contact({ t }: { t: Dict }) {
 
           <div className="lg:col-span-3 bg-card dark:bg-card rounded-3xl p-8 border border-border shadow-sm">
             {status === "success" ? (
-              <div className="text-center py-16">
-                <CheckCircle size={48} className="text-secondary mx-auto mb-4" />
+              <div role="status" aria-live="polite" className="text-center py-16">
+                <CheckCircle size={48} className="text-secondary mx-auto mb-4" aria-hidden="true" />
                 <h3 className="font-bold text-foreground text-xl mb-2">Message Sent!</h3>
                 <p className="text-muted-foreground">Thank you for reaching out. We will respond as soon as possible.</p>
               </div>
@@ -92,11 +90,15 @@ export function Contact({ t }: { t: Dict }) {
                   submit(form);
                 }}
                 className="space-y-5"
+                noValidate
               >
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-1.5">{t.contact.name}</label>
+                    <label htmlFor="contact-name" className="block text-sm font-medium text-foreground mb-1.5">
+                      {t.contact.name}
+                    </label>
                     <input
+                      id="contact-name"
                       required
                       className={fieldClass}
                       value={form.name}
@@ -104,8 +106,11 @@ export function Contact({ t }: { t: Dict }) {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-1.5">{t.contact.email}</label>
+                    <label htmlFor="contact-email" className="block text-sm font-medium text-foreground mb-1.5">
+                      {t.contact.email}
+                    </label>
                     <input
+                      id="contact-email"
                       type="email"
                       required
                       className={fieldClass}
@@ -115,8 +120,11 @@ export function Contact({ t }: { t: Dict }) {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">{t.contact.subject}</label>
+                  <label htmlFor="contact-subject" className="block text-sm font-medium text-foreground mb-1.5">
+                    {t.contact.subject}
+                  </label>
                   <input
+                    id="contact-subject"
                     required
                     className={fieldClass}
                     value={form.subject}
@@ -124,8 +132,11 @@ export function Contact({ t }: { t: Dict }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">{t.contact.msg}</label>
+                  <label htmlFor="contact-message" className="block text-sm font-medium text-foreground mb-1.5">
+                    {t.contact.msg}
+                  </label>
                   <textarea
+                    id="contact-message"
                     rows={6}
                     required
                     className={`${fieldClass} resize-none`}
@@ -133,13 +144,15 @@ export function Contact({ t }: { t: Dict }) {
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                   />
                 </div>
-                {status === "error" && <p className="text-sm text-destructive">{errorMessage}</p>}
+                <p role="status" aria-live="polite" className={status === "error" ? "text-sm text-destructive" : "sr-only"}>
+                  {status === "error" ? errorMessage : ""}
+                </p>
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="flex items-center gap-2 bg-primary hover:bg-blue-800 text-white px-8 py-3 rounded-xl font-semibold transition-colors disabled:opacity-60"
+                  className="flex items-center gap-2 bg-primary hover:bg-blue-800 text-white px-8 py-3 rounded-xl font-semibold transition-colors disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
-                  <Send size={16} /> {status === "submitting" ? "Sending..." : t.contact.send}
+                  <Send size={16} aria-hidden="true" /> {status === "submitting" ? "Sending..." : t.contact.send}
                 </button>
               </form>
             )}

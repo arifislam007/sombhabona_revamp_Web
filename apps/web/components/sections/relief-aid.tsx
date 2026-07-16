@@ -4,6 +4,7 @@ import Image from "next/image";
 import { HandHelping, CheckCircle } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
 import { IMGS } from "@/lib/images";
+import { Reveal } from "@/components/reveal";
 
 export function ReliefAid({ t }: { t: Dict }) {
   const galleryImgs = [IMGS.relief1, IMGS.relief2, IMGS.community1, IMGS.community2, IMGS.volunteer1, IMGS.volunteer2];
@@ -12,9 +13,9 @@ export function ReliefAid({ t }: { t: Dict }) {
     <section className="py-20 lg:py-28 bg-gradient-to-br from-[#0c2461] to-[#1E3A8A] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+          <Reveal>
             <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
-              <HandHelping size={14} className="text-cyan-300" /> {t.relief.label}
+              <HandHelping size={14} className="text-cyan-300" aria-hidden="true" /> {t.relief.label}
             </div>
             <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6 leading-tight">{t.relief.title}</h2>
             <p className="text-white/80 leading-relaxed mb-8 text-lg">{t.relief.sub}</p>
@@ -26,7 +27,7 @@ export function ReliefAid({ t }: { t: Dict }) {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
           <div className="grid grid-cols-3 gap-3">
             {galleryImgs.map((src, i) => (
               <div
@@ -38,6 +39,7 @@ export function ReliefAid({ t }: { t: Dict }) {
                   src={src}
                   alt="Sombhabona relief aid activities"
                   fill
+                  sizes="(min-width: 1024px) 33vw, 50vw"
                   className="object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { T, type Lang } from "@/lib/i18n";
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
+import { FocusPillars } from "@/components/sections/focus-pillars";
 import { About } from "@/components/sections/about";
 import { ImpactStats } from "@/components/sections/impact-stats";
 import { Programs } from "@/components/sections/programs";
@@ -30,19 +31,22 @@ export default function Home() {
   return (
     <div className={`bg-background text-foreground ${lang === "bn" ? "font-bengali" : "font-sans"}`}>
       <Navbar lang={lang} setLang={setLang} dark={dark} setDark={setDark} t={t} />
-      <Hero t={t} />
-      <About t={t} />
-      <ImpactStats t={t} />
-      <Programs t={t} />
-      <ReliefAid t={t} />
-      <Stories t={t} />
-      <Gallery t={t} />
-      <Volunteer t={t} />
-      <Donation t={t} />
-      <SupportNetwork t={t} />
-      <News t={t} />
-      <Testimonials t={t} />
-      <Contact t={t} />
+      <main id="main-content">
+        <Hero t={t} />
+        <FocusPillars t={t} />
+        <About t={t} />
+        <ImpactStats t={t} />
+        <Programs t={t} />
+        <ReliefAid t={t} />
+        <Stories t={t} />
+        <Gallery t={t} />
+        <Volunteer t={t} />
+        <Donation t={t} />
+        <SupportNetwork t={t} />
+        <News t={t} />
+        <Testimonials t={t} />
+        <Contact t={t} />
+      </main>
       <Footer t={t} />
     </div>
   );

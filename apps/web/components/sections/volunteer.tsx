@@ -4,6 +4,8 @@ import { useState } from "react";
 import { BookOpen, Wrench, Heart, TrendingUp, Users, CheckCircle } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
 import { useFormSubmit } from "@/lib/use-form-submit";
+import { siteConfig } from "@/content/site";
+import { Reveal } from "@/components/reveal";
 
 const ways = [
   { icon: BookOpen, title: "Teaching & Tutoring", desc: "Support children's learning in core subjects" },
@@ -23,14 +25,30 @@ export function Volunteer({ t }: { t: Dict }) {
     <section id="volunteer" className="py-20 lg:py-28 bg-white dark:bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+          <Reveal>
             <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-3">
               {t.volunteer.label}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
               {t.volunteer.title}
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-8">{t.volunteer.sub}</p>
+            <p className="text-muted-foreground leading-relaxed mb-6">{t.volunteer.sub}</p>
+
+            <div className="flex gap-6 mb-8">
+              <div>
+                <div className="font-display text-2xl font-bold text-primary">
+                  {siteConfig.stats.activeVolunteers}+
+                </div>
+                <div className="text-xs text-muted-foreground">Active Volunteers</div>
+              </div>
+              <div className="w-px bg-border" />
+              <div>
+                <div className="font-display text-2xl font-bold text-secondary">
+                  {siteConfig.stats.districtsReached}
+                </div>
+                <div className="text-xs text-muted-foreground">Districts Reached Across Bangladesh</div>
+              </div>
+            </div>
 
             <div className="space-y-4">
               {ways.map(({ icon: Icon, title, desc }) => (
@@ -48,12 +66,12 @@ export function Volunteer({ t }: { t: Dict }) {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
-          <div className="bg-card dark:bg-card rounded-3xl p-8 border border-border shadow-sm">
+          <Reveal delay={150} className="bg-card dark:bg-card rounded-3xl p-8 border border-border shadow-sm">
             {status === "success" ? (
-              <div className="text-center py-12">
-                <CheckCircle size={48} className="text-secondary mx-auto mb-4" />
+              <div role="status" aria-live="polite" className="text-center py-12">
+                <CheckCircle size={48} className="text-secondary mx-auto mb-4" aria-hidden="true" />
                 <h3 className="font-bold text-foreground text-xl mb-2">Application Submitted!</h3>
                 <p className="text-muted-foreground">Thank you for your willingness to serve. We will contact you shortly.</p>
               </div>
@@ -64,10 +82,14 @@ export function Volunteer({ t }: { t: Dict }) {
                   submit(form);
                 }}
                 className="space-y-4"
+                noValidate
               >
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">{t.volunteer.name}</label>
+                  <label htmlFor="volunteer-name" className="block text-sm font-medium text-foreground mb-1.5">
+                    {t.volunteer.name}
+                  </label>
                   <input
+                    id="volunteer-name"
                     required
                     className={fieldClass}
                     value={form.name}
@@ -75,8 +97,11 @@ export function Volunteer({ t }: { t: Dict }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">{t.volunteer.email}</label>
+                  <label htmlFor="volunteer-email" className="block text-sm font-medium text-foreground mb-1.5">
+                    {t.volunteer.email}
+                  </label>
                   <input
+                    id="volunteer-email"
                     type="email"
                     required
                     className={fieldClass}
@@ -85,8 +110,11 @@ export function Volunteer({ t }: { t: Dict }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">{t.volunteer.phone}</label>
+                  <label htmlFor="volunteer-phone" className="block text-sm font-medium text-foreground mb-1.5">
+                    {t.volunteer.phone}
+                  </label>
                   <input
+                    id="volunteer-phone"
                     type="tel"
                     required
                     className={fieldClass}
@@ -95,8 +123,11 @@ export function Volunteer({ t }: { t: Dict }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">{t.volunteer.skill}</label>
+                  <label htmlFor="volunteer-skill" className="block text-sm font-medium text-foreground mb-1.5">
+                    {t.volunteer.skill}
+                  </label>
                   <input
+                    id="volunteer-skill"
                     required
                     className={fieldClass}
                     value={form.skill}
@@ -104,25 +135,30 @@ export function Volunteer({ t }: { t: Dict }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">{t.volunteer.msg}</label>
+                  <label htmlFor="volunteer-message" className="block text-sm font-medium text-foreground mb-1.5">
+                    {t.volunteer.msg}
+                  </label>
                   <textarea
+                    id="volunteer-message"
                     rows={3}
                     className={`${fieldClass} resize-none`}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                   />
                 </div>
-                {status === "error" && <p className="text-sm text-destructive">{errorMessage}</p>}
+                <p role="status" aria-live="polite" className={status === "error" ? "text-sm text-destructive" : "sr-only"}>
+                  {status === "error" ? errorMessage : ""}
+                </p>
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-blue-800 text-white py-3 rounded-xl font-semibold transition-colors disabled:opacity-60"
+                  className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-blue-800 text-white py-3 rounded-xl font-semibold transition-colors disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
-                  <Users size={16} /> {status === "submitting" ? "Submitting..." : t.volunteer.submit}
+                  <Users size={16} aria-hidden="true" /> {status === "submitting" ? "Submitting..." : t.volunteer.submit}
                 </button>
               </form>
             )}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

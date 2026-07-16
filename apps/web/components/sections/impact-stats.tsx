@@ -5,6 +5,7 @@ import { GraduationCap, Heart, MapPin, Calendar } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
 import { useCounter } from "@/lib/use-counter";
 import { siteConfig } from "@/content/site";
+import { SectionHeading } from "@/components/section-heading";
 
 export function ImpactStats({ t }: { t: Dict }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -40,12 +41,7 @@ export function ImpactStats({ t }: { t: Dict }) {
       className="py-20 lg:py-28 bg-gradient-to-br from-primary to-[#1a327a] dark:from-gray-900 dark:to-gray-800 text-white"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <span className="inline-block text-orange-300 font-semibold text-sm uppercase tracking-widest mb-3">
-            {t.stats.label}
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold">{t.stats.title}</h2>
-        </div>
+        <SectionHeading eyebrow={t.stats.label} title={t.stats.title} size="sm" light className="mb-14" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map(({ value, suffix, label, icon: Icon, color, bg }) => (
             <div key={label} className="text-center group">

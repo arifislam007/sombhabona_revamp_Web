@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { Shield, Star, CheckCircle, UserRound } from "lucide-react";
+import { Shield, Star, CheckCircle, UserRound, Quote as QuoteIcon } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
 import { siteConfig } from "@/content/site";
 import { founder, team, type TeamMember } from "@/content/team";
+import { Reveal } from "@/components/reveal";
 
 function initialsOf(name: string) {
   return name
@@ -42,7 +43,7 @@ export function About({ t }: { t: Dict }) {
     <section id="about" className="py-20 lg:py-28 bg-white dark:bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div>
+          <Reveal>
             <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-3">
               {t.about.label}
             </span>
@@ -77,13 +78,17 @@ export function About({ t }: { t: Dict }) {
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delay={150}>
             <div className="bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 rounded-3xl p-6 border border-primary/10">
               <span className="inline-block text-accent font-semibold text-xs uppercase tracking-widest mb-4">
                 {t.about.founder}
               </span>
+              <QuoteIcon size={24} className="text-accent mb-3" />
+              <p className="font-display text-lg italic text-foreground leading-relaxed mb-4">
+                &ldquo;{t.about.founderQuote}&rdquo;
+              </p>
               <div className="flex items-center gap-3 mb-4">
                 <Avatar member={founder} size={48} />
                 <div>
@@ -91,7 +96,7 @@ export function About({ t }: { t: Dict }) {
                   <div className="text-xs text-muted-foreground">{founder.role}</div>
                 </div>
               </div>
-              <p className="text-foreground text-sm leading-relaxed">{t.about.founderText}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{t.about.founderText}</p>
             </div>
 
             <div className="mt-8 rounded-2xl border border-border p-6">
@@ -119,7 +124,7 @@ export function About({ t }: { t: Dict }) {
                 <div>{siteConfig.contact.emails.join(" · ")}</div>
               </dl>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

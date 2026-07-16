@@ -13,6 +13,8 @@ export const siteConfig = {
     studentsEducated: 1650,
     totalBeneficiaries: 32000,
     districtsReached: 35,
+    activeVolunteers: 1000,
+    womenTrainedTailoring: 160,
   },
   contact: {
     address: "House no. 40, Road-33, Block: E, Mirpur-12, Dhaka-1216, Bangladesh",

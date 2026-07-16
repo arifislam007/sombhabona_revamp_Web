@@ -1,7 +1,9 @@
 "use client";
 
 import { Star } from "lucide-react";
+import { motion } from "framer-motion";
 import type { Dict } from "@/lib/i18n";
+import { SectionHeading } from "@/components/section-heading";
 
 const items = [
   {
@@ -30,23 +32,27 @@ export function Testimonials({ t }: { t: Dict }) {
   return (
     <section className="py-20 lg:py-28 bg-gradient-to-br from-[#f0f7ff] to-[#f0fdf4] dark:from-muted/5 dark:to-muted/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-            {t.testimonials.label}
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">{t.testimonials.title}</h2>
-        </div>
+        <SectionHeading eyebrow={t.testimonials.label} title={t.testimonials.title} size="sm" className="mb-14" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {items.map(({ role, text, stars }) => (
-            <div key={role} className="bg-card dark:bg-card rounded-3xl p-6 border border-border hover:shadow-lg transition-shadow">
-              <div className="flex mb-4">
+          {items.map(({ role, text, stars }, i) => (
+            <motion.div
+              key={role}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              whileHover={{ y: -6, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.15)" }}
+              className="bg-card dark:bg-card rounded-3xl p-6 border border-border"
+            >
+              <div className="flex mb-4" aria-hidden="true">
                 {Array.from({ length: stars }).map((_, i) => (
                   <Star key={i} size={14} className="text-yellow-400 fill-yellow-400" />
                 ))}
               </div>
+              <p className="sr-only">{stars} out of 5 stars.</p>
               <p className="text-foreground text-sm leading-relaxed italic">&ldquo;{text}&rdquo;</p>
               <div className="mt-5 text-xs font-semibold text-muted-foreground">{role}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -85,6 +85,17 @@ The Figma design (`figma_code/`) included placeholder marketing copy that isn't 
 
 Stock photography (Unsplash) is still used as placeholder imagery — swap for real Sombhabona photos when available.
 
+## Verified facts from external coverage
+
+Beyond sombhabona.org itself, the following are sourced from independent press coverage (see inline comments in `apps/web/content/site.ts`, `programs.ts`, `events.ts` for details):
+
+- **170+ active volunteers** — per BSS News
+- **Onindito Naree**: 160+ women trained in tailoring/crafts, 100+ employed in an on-site garment workshop — per The Daily Star
+- Real past events: the Pushpokoli Eid Festival & Iftar (Mar 23, 2025, ~200 children — The Financial Express) and the Pushpokoli Winter Festival (Jan 3, 2020, ~300 children — The Daily Star)
+- The founder quote in the About section ("If we can ensure their quality and skill-based education...") is attributed to Md Areful Islam per The Daily Star
+
+The homepage now leads with an interactive "Three Pillars" section (`components/sections/focus-pillars.tsx`) spotlighting Volunteering, Education, and Skill Development with real stats per pillar, and the Programs section has a filter to browse by the same two content pillars (Education / Skill Development).
+
 ## Notes / follow-ups
 
 - Bengali translations in `apps/web/lib/i18n.ts` are a best-effort machine/AI translation — have a native speaker review before launch.

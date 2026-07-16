@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Heart, Shield, GraduationCap, Wrench, DollarSign } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
 import { programs } from "@/content/programs";
+import { SectionHeading } from "@/components/section-heading";
 
 const amounts = [100, 250, 500, 1500, 2500, 5000];
 
@@ -48,21 +49,18 @@ export function Donation({ t }: { t: Dict }) {
   return (
     <section id="donation" className="py-20 lg:py-28 bg-muted/30 dark:bg-muted/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-            {t.donation.label}
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">{t.donation.title}</h2>
-        </div>
+        <SectionHeading eyebrow={t.donation.label} title={t.donation.title} className="mb-14" />
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="bg-card dark:bg-card rounded-3xl p-8 border border-border shadow-sm">
-            <div className="flex rounded-xl overflow-hidden border border-border mb-6">
+            <div role="radiogroup" aria-label="Donation frequency" className="flex rounded-xl overflow-hidden border border-border mb-6">
               {([["once", t.donation.once], ["monthly", t.donation.monthly]] as const).map(([v, l]) => (
                 <button
                   key={v}
+                  role="radio"
+                  aria-checked={type === v}
                   onClick={() => setType(v)}
-                  className={`flex-1 py-2.5 text-sm font-semibold transition-colors ${
+                  className={`flex-1 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset ${
                     type === v ? "bg-primary text-white" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -72,14 +70,22 @@ export function Donation({ t }: { t: Dict }) {
             </div>
 
             <div className="mb-4 space-y-3">
+              <label htmlFor="donor-name" className="sr-only">
+                Your full name
+              </label>
               <input
+                id="donor-name"
                 placeholder="Your full name"
                 required
                 value={donorName}
                 onChange={(e) => setDonorName(e.target.value)}
                 className="w-full px-4 py-2.5 rounded-xl border border-border bg-input-background dark:bg-muted/30 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm"
               />
+              <label htmlFor="donor-email" className="sr-only">
+                Email (optional)
+              </label>
               <input
+                id="donor-email"
                 type="email"
                 placeholder="Email (optional)"
                 value={donorEmail}
@@ -88,15 +94,17 @@ export function Donation({ t }: { t: Dict }) {
               />
             </div>
 
-            <div className="grid grid-cols-3 gap-3 mb-4">
+            <div role="radiogroup" aria-label="Preset donation amount" className="grid grid-cols-3 gap-3 mb-4">
               {amounts.map((a) => (
                 <button
                   key={a}
+                  role="radio"
+                  aria-checked={amount === a && !custom}
                   onClick={() => {
                     setAmount(a);
                     setCustom("");
                   }}
-                  className={`py-2.5 rounded-xl text-sm font-semibold border transition-colors ${
+                  className={`py-2.5 rounded-xl text-sm font-semibold border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                     amount === a && !custom
                       ? "border-primary bg-primary text-white"
                       : "border-border text-foreground hover:border-primary hover:text-primary"
@@ -108,8 +116,11 @@ export function Donation({ t }: { t: Dict }) {
             </div>
 
             <div className="mb-6">
-              <label className="block text-sm font-medium text-foreground mb-1.5">{t.donation.custom} (BDT)</label>
+              <label htmlFor="donor-custom-amount" className="block text-sm font-medium text-foreground mb-1.5">
+                {t.donation.custom} (BDT)
+              </label>
               <input
+                id="donor-custom-amount"
                 type="number"
                 value={custom}
                 placeholder="Enter amount"
@@ -142,19 +153,21 @@ export function Donation({ t }: { t: Dict }) {
 
             {type === "monthly" && <p className="text-xs text-muted-foreground mb-4">{t.donation.monthlyNote}</p>}
 
-            {error && <p className="text-sm text-destructive mb-4">{error}</p>}
+            <p role="status" aria-live="polite" className={error ? "text-sm text-destructive mb-4" : "sr-only"}>
+              {error ?? ""}
+            </p>
 
             <button
               onClick={handleDonate}
               disabled={submitting}
-              className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-orange-600 text-white py-4 rounded-xl font-bold text-base transition-colors shadow-lg shadow-orange-500/20 disabled:opacity-60"
+              className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-orange-600 text-white py-4 rounded-xl font-bold text-base transition-colors shadow-lg shadow-orange-500/20 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
-              <Heart size={18} />
+              <Heart size={18} aria-hidden="true" />
               {submitting ? "Redirecting to bKash..." : `${t.donation.donate} — ৳${finalAmount.toLocaleString()}`}
             </button>
 
             <p className="text-center text-xs text-muted-foreground mt-4 flex items-center justify-center gap-1">
-              <Shield size={12} /> Secure bKash payment
+              <Shield size={12} aria-hidden="true" /> Secure bKash payment
             </p>
           </div>
 

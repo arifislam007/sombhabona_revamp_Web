@@ -33,7 +33,8 @@ export function Footer({ t }: { t: Dict }) {
                 href={siteConfig.contact.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-accent flex items-center justify-center text-white/70 hover:text-white transition-colors border border-white/10"
+                aria-label="Sombhabona on Facebook (opens in a new tab)"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-accent flex items-center justify-center text-white/70 hover:text-white transition-colors border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <FacebookIcon size={15} />
               </a>
@@ -41,9 +42,10 @@ export function Footer({ t }: { t: Dict }) {
                 href={siteConfig.contact.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-accent flex items-center justify-center text-white/70 hover:text-white transition-colors border border-white/10"
+                aria-label="Chat with Sombhabona on WhatsApp (opens in a new tab)"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-accent flex items-center justify-center text-white/70 hover:text-white transition-colors border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <MessageCircle size={15} />
+                <MessageCircle size={15} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -62,9 +64,13 @@ export function Footer({ t }: { t: Dict }) {
           </div>
 
           <div>
-            <div className="font-semibold text-sm uppercase tracking-wider mb-4 text-white/80">{t.footer.newsletter}</div>
+            <label htmlFor="footer-newsletter-email" className="font-semibold text-sm uppercase tracking-wider mb-4 text-white/80 block">
+              {t.footer.newsletter}
+            </label>
             {status === "success" ? (
-              <p className="text-sm text-emerald-300">Thanks for subscribing!</p>
+              <p role="status" aria-live="polite" className="text-sm text-emerald-300">
+                Thanks for subscribing!
+              </p>
             ) : (
               <form
                 className="flex gap-2"
@@ -74,28 +80,31 @@ export function Footer({ t }: { t: Dict }) {
                 }}
               >
                 <input
+                  id="footer-newsletter-email"
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@email.com"
+                  aria-label="Email address"
                   className="flex-1 px-3 py-2.5 rounded-xl bg-white/10 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
                 />
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="bg-accent hover:bg-orange-600 text-white px-3 py-2.5 rounded-xl transition-colors text-sm font-medium disabled:opacity-60"
+                  aria-label="Subscribe"
+                  className="bg-accent hover:bg-orange-600 text-white px-3 py-2.5 rounded-xl transition-colors text-sm font-medium disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  <Send size={14} />
+                  <Send size={14} aria-hidden="true" />
                 </button>
               </form>
             )}
             <div className="mt-6">
               <button
                 onClick={() => scrollTo("donation")}
-                className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-orange-600 text-white py-3 rounded-xl font-semibold text-sm transition-colors"
+                className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-orange-600 text-white py-3 rounded-xl font-semibold text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <Heart size={14} /> {t.nav.donate}
+                <Heart size={14} aria-hidden="true" /> {t.nav.donate}
               </button>
             </div>
           </div>

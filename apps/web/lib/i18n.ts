@@ -17,6 +17,14 @@ export const T = {
       cta1: "Donate Now",
       cta2: "Become a Volunteer",
     },
+    pillars: {
+      label: "Our Focus",
+      title: "Three Pillars, One Mission",
+      sub: "Everything we do centers on three things: mobilizing volunteers, providing free education, and building real-world skills.",
+      volunteering: "Volunteering",
+      education: "Education",
+      skillDevelopment: "Skill Development",
+    },
     about: {
       label: "Our Story",
       title: "15+ Years of Hope & Empowerment",
@@ -29,6 +37,8 @@ export const T = {
         "A future where every citizen is solvent, well-educated, and empowered to contribute positively to society.",
       values: "Focus Areas",
       founder: "Our Founder",
+      founderQuote:
+        "If we can ensure their quality and skill-based education, we can build a bright future for them.",
       founderText:
         "Md Areful Islam founded Sombhabona in 2011 and has led the organization's growth ever since, building a team dedicated to education, skill development, and relief aid across Bangladesh.",
       team: "Leadership Team",
@@ -147,6 +157,14 @@ export const T = {
       cta1: "এখনই দান করুন",
       cta2: "স্বেচ্ছাসেবক হন",
     },
+    pillars: {
+      label: "আমাদের অগ্রাধিকার",
+      title: "তিনটি স্তম্ভ, একটি লক্ষ্য",
+      sub: "আমাদের সকল কাজ তিনটি বিষয়ের উপর কেন্দ্রীভূত: স্বেচ্ছাসেবক সংগঠিত করা, বিনামূল্যে শিক্ষা প্রদান, এবং বাস্তব দক্ষতা গড়ে তোলা।",
+      volunteering: "স্বেচ্ছাসেবা",
+      education: "শিক্ষা",
+      skillDevelopment: "দক্ষতা উন্নয়ন",
+    },
     about: {
       label: "আমাদের গল্প",
       title: "আশা ও ক্ষমতায়নের ১৫+ বছর",
@@ -159,6 +177,8 @@ export const T = {
         "এমন একটি ভবিষ্যৎ যেখানে প্রতিটি নাগরিক সচ্ছল, সুশিক্ষিত এবং সমাজে ইতিবাচক অবদান রাখতে সক্ষম।",
       values: "মূল কার্যক্ষেত্র",
       founder: "আমাদের প্রতিষ্ঠাতা",
+      founderQuote:
+        "আমরা যদি তাদের মানসম্মত ও দক্ষতাভিত্তিক শিক্ষা নিশ্চিত করতে পারি, তাহলে তাদের জন্য একটি উজ্জ্বল ভবিষ্যৎ গড়ে তুলতে পারব।",
       founderText:
         "মোঃ আরেফুল ইসলাম ২০১১ সালে সম্ভাবনা প্রতিষ্ঠা করেন এবং তখন থেকে প্রতিষ্ঠানটির প্রবৃদ্ধিতে নেতৃত্ব দিয়ে আসছেন, শিক্ষা, দক্ষতা উন্নয়ন ও ত্রাণ সহায়তায় নিবেদিত একটি দল গড়ে তুলেছেন।",
       team: "নেতৃত্ব দল",
