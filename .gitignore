@@ -14,3 +14,6 @@ node_modules/
 
 # OS
 .DS_Store
+
+# raw photo archive (source material — selected/optimized copies live in apps/web/public/gallery/)
+/Audio Visual/
