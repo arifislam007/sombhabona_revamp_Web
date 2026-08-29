@@ -1,11 +1,11 @@
-// Real Sombhabona event photography, sourced from the organization's own archive (Audio Visual/).
+// Real Sombhabona event photography, curated from the organization's own archive (Audio Visual/select_from_here).
 export const IMGS = {
-  hero: "/gallery/hero-eid-celebration.jpg",
-  volunteer1: "/gallery/education-scholarship-speech.jpg",
-  volunteer2: "/gallery/youth-volunteer-team.jpg",
-  volunteer3: "/gallery/children-smiling-branded.jpg",
-  relief1: "/gallery/winter-blanket-distribution.jpg",
-  relief2: "/gallery/eid-community-gathering.jpg",
-  community1: "/gallery/pitha-utsob-community.jpg",
-  community2: "/gallery/pitha-utsob-festival.jpg",
+  hero: "/gallery/hero-winter-distribution.jpg",
+  volunteer1: "/gallery/education-new-books.jpg",
+  volunteer2: "/gallery/training-ict-program.jpg",
+  volunteer3: "/gallery/education-scholarship-award.jpg",
+  relief1: "/gallery/relief-food-package.jpg",
+  relief2: "/gallery/relief-elderly-blanket.jpg",
+  community1: "/gallery/community-pohela-boishakh.jpg",
+  community2: "/gallery/community-victory-day.jpg",
 } as const;
