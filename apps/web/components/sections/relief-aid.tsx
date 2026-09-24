@@ -3,11 +3,17 @@
 import Image from "next/image";
 import { HandHelping, CheckCircle } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
-import { IMGS } from "@/lib/images";
 import { Reveal } from "@/components/reveal";
 
 export function ReliefAid({ t }: { t: Dict }) {
-  const galleryImgs = [IMGS.relief1, IMGS.relief2, IMGS.community1, IMGS.community2, IMGS.volunteer1, IMGS.volunteer2];
+  const galleryImgs = [
+    { src: "/gallery/relief-winter-blankets-1.jpg", alt: "Children in green sweatshirts holding folded orange blankets at a winter festival" },
+    { src: "/gallery/relief-elderly-blanket.jpg", alt: "A volunteer wrapping a blanket around an elderly man sleeping on the street at night" },
+    { src: "/gallery/relief-food-package.jpg", alt: "A volunteer handing a meal box to a woman at her doorway" },
+    { src: "/gallery/relief-winter-blankets-2.jpg", alt: "Children smiling with new blankets during a winter clothing distribution" },
+    { src: "/gallery/relief-winter-meal.jpg", alt: "Children eating a shared meal at a winter festival" },
+    { src: "/gallery/relief-eid-clothes.jpg", alt: "Three boys in new Eid panjabis on a Mirpur street" },
+  ];
 
   return (
     <section className="py-20 lg:py-28 bg-gradient-to-br from-[#0c2461] to-[#1E3A8A] text-white overflow-hidden">
@@ -29,7 +35,7 @@ export function ReliefAid({ t }: { t: Dict }) {
             </ul>
           </Reveal>
           <div className="grid grid-cols-3 gap-3">
-            {galleryImgs.map((src, i) => (
+            {galleryImgs.map(({ src, alt }, i) => (
               <div
                 key={src}
                 className={`relative overflow-hidden rounded-2xl ${i === 0 || i === 5 ? "col-span-2 row-span-1" : ""}`}
@@ -37,7 +43,7 @@ export function ReliefAid({ t }: { t: Dict }) {
               >
                 <Image
                   src={src}
-                  alt="Sombhabona relief aid activities"
+                  alt={alt}
                   fill
                   sizes="(min-width: 1024px) 33vw, 50vw"
                   className="object-cover hover:scale-105 transition-transform duration-500"

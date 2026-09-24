@@ -23,9 +23,16 @@ export function Navbar({
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handler);
+    window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   const links: [string, string][] = [
     ["about", t.nav.about],
@@ -35,11 +42,6 @@ export function Navbar({
     ["volunteer", t.nav.volunteer],
     ["contact", t.nav.contact],
   ];
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setOpen(false);
-  };
 
   return (
     <header
@@ -53,15 +55,15 @@ export function Navbar({
 
           <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-6 xl:gap-8">
             {links.map(([id, label]) => (
-              <button
+              <a
                 key={id}
-                onClick={() => scrollTo(id)}
+                href={`#${id}`}
                 className={`text-sm font-medium transition-colors hover:text-accent rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
                   scrolled ? "text-foreground" : "text-white"
                 }`}
               >
                 {label}
-              </button>
+              </a>
             ))}
           </nav>
 
@@ -69,7 +71,7 @@ export function Navbar({
             <button
               onClick={() => setLang(lang === "en" ? "bn" : "en")}
               aria-label={lang === "en" ? "Switch to Bengali" : "Switch to English"}
-              className={`flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+              className={`flex items-center gap-1 text-xs font-medium px-3 min-h-[36px] rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
                 scrolled ? "border-border text-foreground" : "border-white/40 text-white"
               }`}
             >
@@ -79,24 +81,24 @@ export function Navbar({
               onClick={() => setDark(!dark)}
               aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
               aria-pressed={dark}
-              className={`p-1.5 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+              className={`p-2 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
                 scrolled ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/20"
               }`}
             >
               {dark ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
             </button>
-            <button
-              onClick={() => scrollTo("donation")}
-              className="hidden lg:flex items-center gap-1.5 bg-accent text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-orange-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            <a
+              href="#donation"
+              className="hidden lg:flex items-center gap-1.5 bg-cta text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-cta-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               <Heart size={14} aria-hidden="true" /> {t.nav.donate}
-            </button>
+            </a>
             <button
               onClick={() => setOpen(!open)}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="mobile-nav"
-              className={`lg:hidden p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-md ${scrolled ? "text-foreground" : "text-white"}`}
+              className={`lg:hidden p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-md ${scrolled ? "text-foreground" : "text-white"}`}
             >
               {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
             </button>
@@ -107,21 +109,23 @@ export function Navbar({
       {open && (
         <nav id="mobile-nav" aria-label="Mobile navigation" className="lg:hidden bg-white dark:bg-gray-900 border-t border-border shadow-lg">
           {links.map(([id, label]) => (
-            <button
+            <a
               key={id}
-              onClick={() => scrollTo(id)}
+              href={`#${id}`}
+              onClick={() => setOpen(false)}
               className="block w-full text-left px-6 py-3 text-sm font-medium text-foreground hover:bg-muted transition-colors border-b border-border last:border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
             >
               {label}
-            </button>
+            </a>
           ))}
           <div className="px-6 py-4">
-            <button
-              onClick={() => scrollTo("donation")}
-              className="w-full flex items-center justify-center gap-2 bg-accent text-white py-2.5 rounded-full text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            <a
+              href="#donation"
+              onClick={() => setOpen(false)}
+              className="w-full flex items-center justify-center gap-2 bg-cta hover:bg-cta-hover text-white py-2.5 rounded-full text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               <Heart size={14} aria-hidden="true" /> {t.nav.donate}
-            </button>
+            </a>
           </div>
         </nav>
       )}

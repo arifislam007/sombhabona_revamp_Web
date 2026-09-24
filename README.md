@@ -83,7 +83,7 @@ The Figma design (`figma_code/`) included placeholder marketing copy that isn't 
 - Generic partner *categories* (Corporate Partners, Financial Institutions, etc.) instead of naming specific real organizations with no confirmed relationship
 - A donation "causes" list grounded in real programs instead of fabricated fundraising progress numbers
 
-Stock photography (Unsplash) is still used as placeholder imagery — swap for real Sombhabona photos when available.
+Imagery is real Sombhabona event photography. The raw archive (`Audio Visual/`) is git-ignored; optimised copies of the photos actually used live in `apps/web/public/gallery/`, mapped in `apps/web/lib/images.ts` and `components/sections/gallery.tsx`.
 
 ## Verified facts from external coverage
 

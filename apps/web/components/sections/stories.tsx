@@ -5,7 +5,6 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote as QuoteIcon } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
-import { IMGS } from "@/lib/images";
 import { SectionHeading } from "@/components/section-heading";
 
 const stories = [
@@ -14,28 +13,28 @@ const stories = [
     quote:
       "Before joining Pushpokoli School, I had never held a book of my own. Now I look forward to learning something new every day.",
     color: "bg-primary/10 text-primary",
-    img: IMGS.volunteer2,
+    img: "/gallery/education-new-books.jpg",
   },
   {
     tag: "Sombhabona ICT Graduate",
     quote:
       "The ICT training gave me practical computer skills I never had access to before, and the confidence to look for work in the field.",
     color: "bg-secondary/10 text-secondary",
-    img: IMGS.volunteer1,
+    img: "/gallery/training-ict-program.jpg",
   },
   {
     tag: "Onindito Naree Participant",
     quote:
       "The skill training program gave me a way to support my family and a sense of independence I hadn't felt before.",
     color: "bg-accent/10 text-accent",
-    img: IMGS.relief1,
+    img: "/gallery/craft-clay-flowers-1.jpg",
   },
   {
     tag: "Community Volunteer",
     quote:
       "Volunteering with Sombhabona showed me how much difference consistent, local support can make for a family.",
     color: "bg-purple-100 dark:bg-purple-500/10 text-purple-600",
-    img: IMGS.community1,
+    img: "/gallery/volunteer-team.jpg",
   },
 ];
 

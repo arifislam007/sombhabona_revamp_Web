@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { BookOpen, GraduationCap, Wrench, HandHelping, Users2, Building2 } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
 import { programs, type Pillar } from "@/content/programs";
-import { IMGS } from "@/lib/images";
 import { SectionHeading } from "@/components/section-heading";
 
 const icons = [BookOpen, GraduationCap, Wrench, HandHelping, Users2, Building2] as const;
@@ -18,7 +17,14 @@ const colors = [
   { color: "text-purple-500", bg: "bg-purple-100 dark:bg-purple-500/10" },
   { color: "text-emerald-500", bg: "bg-emerald-100 dark:bg-emerald-500/10" },
 ];
-const images = [IMGS.volunteer1, IMGS.volunteer2, IMGS.community1, IMGS.community2, IMGS.relief1, IMGS.volunteer3];
+const images = [
+  "/gallery/program-school-lesson.jpg", // Pushpokoli School
+  "/gallery/program-sponsor-child.jpg", // Sponsor A Children
+  "/gallery/training-ict-program.jpg", // Sombhabona ICT
+  "/gallery/craft-clay-flowers-1.jpg", // Onindito Naree
+  "/gallery/training-ict-graduation.jpg", // Sawnirvor Project
+  "/gallery/craft-clay-flowers-2.jpg", // Amar Ghor Amar Karkhana
+];
 
 const pillarLabels: Record<Pillar, string> = {
   education: "Education",

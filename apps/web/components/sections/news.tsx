@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
 import { events } from "@/content/events";
-import { IMGS } from "@/lib/images";
 import { SectionHeading } from "@/components/section-heading";
 
 const posts = [
@@ -14,14 +13,14 @@ const posts = [
     cat: "Event",
     title: events[0].title,
     desc: events[0].description,
-    img: IMGS.relief2,
+    img: "/gallery/relief-iftar-distribution.jpg",
   },
   {
     date: events[1].date,
     cat: "Event",
     title: events[1].title,
     desc: events[1].description,
-    img: IMGS.community1,
+    img: "/gallery/community-winter-festival.jpg",
   },
 ].sort((a, b) => (a.date < b.date ? 1 : -1));
 

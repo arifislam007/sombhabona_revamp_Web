@@ -12,6 +12,7 @@ export const T = {
       contact: "Contact",
     },
     hero: {
+      since: "Since 2011 · Dhaka, Bangladesh",
       headline: "Creating Opportunities,\nTransforming Lives",
       sub: "Empowering underprivileged children and families through free education, skill development, relief aid, and ICT training across Bangladesh.",
       cta1: "Donate Now",
@@ -64,6 +65,44 @@ export const T = {
         "Emergency relief distribution for vulnerable families",
         "Seasonal support including warm clothing drives",
         "Coordinated with local communities across program districts",
+      ],
+    },
+    journey: {
+      label: "Our Journey",
+      title: "From the Street to the Classroom",
+      sub: "Since 2011, Sombhabona has grown from open-air lessons in Mirpur into schools, skills training, festivals and relief work, always alongside the children and families we serve.",
+      steps: [
+        {
+          title: "Open-air classes",
+          text: "Lessons began outdoors in Mirpur, led by volunteers.",
+          alt: "Two boys holding slates at an evening open-air class in Mirpur",
+        },
+        {
+          title: "Learning together",
+          text: "Songs, exercises and group activities made learning joyful.",
+          alt: "Children doing a group exercise outdoors at a Sombhabona activity",
+        },
+        {
+          title: "Festivals of warmth",
+          text: "Winter and Eid festivals bring warm clothes, meals and celebration to hundreds of children.",
+          alt: "Children in green sweatshirts seated at a long table at a winter festival",
+        },
+        {
+          title: "Young voices",
+          text: "Young people from our community speak up, volunteer and help lead events.",
+          alt: "A young woman speaking into a microphone at a Sombhabona event",
+        },
+      ],
+    },
+    press: {
+      label: "In the Press",
+      title: "Covered by the Media",
+      sub: "Bangladeshi newspapers have reported on our clothing distributions and Pushpokoli School. Select a clipping to read it in full.",
+      items: [
+        { outlet: "Samakal", alt: "Samakal newspaper clipping about Sombhabona's Pushpokoli school" },
+        { outlet: "Daily Sun", alt: "Daily Sun newspaper clipping about a Sombhabona clothes distribution for deprived children" },
+        { outlet: "Bonik Barta", alt: "Bonik Barta newspaper clipping about Eid clothes distribution among street children" },
+        { outlet: "Kaler Kantho", alt: "Kaler Kantho newspaper clipping about Eid clothes distribution among street children" },
       ],
     },
     stories: {
@@ -152,6 +191,7 @@ export const T = {
       contact: "যোগাযোগ",
     },
     hero: {
+      since: "২০১১ থেকে · ঢাকা, বাংলাদেশ",
       headline: "সুযোগ সৃষ্টি করছি,\nজীবন পরিবর্তন করছি",
       sub: "বিনামূল্যে শিক্ষা, দক্ষতা উন্নয়ন, ত্রাণ সহায়তা ও আইসিটি প্রশিক্ষণের মাধ্যমে বাংলাদেশ জুড়ে সুবিধাবঞ্চিত শিশু ও পরিবারের ক্ষমতায়ন।",
       cta1: "এখনই দান করুন",
@@ -204,6 +244,44 @@ export const T = {
         "ঝুঁকিপূর্ণ পরিবারের জন্য জরুরি ত্রাণ বিতরণ",
         "শীতবস্ত্র বিতরণসহ মৌসুমি সহায়তা",
         "কার্যক্রম এলাকাজুড়ে স্থানীয় সম্প্রদায়ের সাথে সমন্বিত",
+      ],
+    },
+    journey: {
+      label: "আমাদের পথচলা",
+      title: "রাস্তা থেকে শ্রেণিকক্ষে",
+      sub: "২০১১ সাল থেকে সম্ভাবনা মিরপুরের খোলা আকাশের নিচের পাঠদান থেকে স্কুল, দক্ষতা প্রশিক্ষণ, উৎসব ও ত্রাণ কার্যক্রমে বিস্তৃত হয়েছে, সবসময় আমাদের শিশু ও পরিবারগুলোর পাশে থেকে।",
+      steps: [
+        {
+          title: "খোলা আকাশের নিচে ক্লাস",
+          text: "স্বেচ্ছাসেবকদের নেতৃত্বে মিরপুরে খোলা জায়গায় পাঠদান শুরু হয়।",
+          alt: "মিরপুরে সন্ধ্যার খোলা আকাশের নিচে ক্লাসে শ্লেট হাতে দুই ছেলে",
+        },
+        {
+          title: "একসাথে শেখা",
+          text: "গান, ব্যায়াম ও দলীয় কার্যক্রম শেখাকে আনন্দময় করে তোলে।",
+          alt: "সম্ভাবনার কার্যক্রমে খোলা জায়গায় দলবদ্ধ ব্যায়াম করছে শিশুরা",
+        },
+        {
+          title: "উষ্ণতার উৎসব",
+          text: "শীত ও ঈদ উৎসবে শত শত শিশুর কাছে পৌঁছে যায় গরম কাপড়, খাবার ও আনন্দ।",
+          alt: "শীত উৎসবে লম্বা টেবিলে সবুজ সোয়েটশার্ট পরা শিশুরা",
+        },
+        {
+          title: "তরুণ কণ্ঠ",
+          text: "আমাদের সমাজের তরুণেরা কথা বলে, স্বেচ্ছাসেবা দেয় এবং অনুষ্ঠান পরিচালনায় সহায়তা করে।",
+          alt: "সম্ভাবনার অনুষ্ঠানে মাইক্রোফোনে কথা বলছেন একজন তরুণী",
+        },
+      ],
+    },
+    press: {
+      label: "গণমাধ্যমে",
+      title: "সংবাদমাধ্যমে সম্ভাবনা",
+      sub: "আমাদের পোশাক বিতরণ ও পুষ্পকলি স্কুল নিয়ে বাংলাদেশের পত্রিকায় প্রতিবেদন প্রকাশিত হয়েছে। পুরো প্রতিবেদন পড়তে ক্লিপিংয়ে ক্লিক করুন।",
+      items: [
+        { outlet: "সমকাল", alt: "সম্ভাবনার পুষ্পকলি স্কুল নিয়ে সমকালে প্রকাশিত প্রতিবেদনের ক্লিপিং" },
+        { outlet: "ডেইলি সান", alt: "সুবিধাবঞ্চিত শিশুদের পোশাক বিতরণ নিয়ে ডেইলি সানে প্রকাশিত প্রতিবেদনের ক্লিপিং" },
+        { outlet: "বণিক বার্তা", alt: "পথশিশুদের ঈদের পোশাক বিতরণ নিয়ে বণিক বার্তায় প্রকাশিত প্রতিবেদনের ক্লিপিং" },
+        { outlet: "কালের কণ্ঠ", alt: "পথশিশুদের ঈদের পোশাক বিতরণ নিয়ে কালের কণ্ঠে প্রকাশিত প্রতিবেদনের ক্লিপিং" },
       ],
     },
     stories: {

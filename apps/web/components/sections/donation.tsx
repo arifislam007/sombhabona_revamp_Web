@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Heart, Shield, GraduationCap, Wrench, DollarSign } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
 import { programs } from "@/content/programs";
 import { SectionHeading } from "@/components/section-heading";
 
 const amounts = [100, 250, 500, 1500, 2500, 5000];
+const MIN_AMOUNT = 10;
+const MAX_AMOUNT = 500_000;
+
+const inputClass =
+  "w-full px-4 py-2.5 rounded-xl border bg-input-background dark:bg-muted/30 text-foreground text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary";
 
 export function Donation({ t }: { t: Dict }) {
   const [type, setType] = useState<"once" | "monthly">("once");
@@ -18,10 +23,29 @@ export function Donation({ t }: { t: Dict }) {
   const [error, setError] = useState<string | null>(null);
 
   const finalAmount = custom ? Number(custom) : amount;
+  const amountValid = Number.isInteger(finalAmount) && finalAmount >= MIN_AMOUNT && finalAmount <= MAX_AMOUNT;
+  const [touched, setTouched] = useState(false);
+  const nameError = touched && !donorName.trim();
+  const amountError = touched && !amountValid;
+
+  // Returning from bKash with the browser back button restores this page from cache with
+  // `submitting` still true; re-enable the form.
+  useEffect(() => {
+    const onShow = (e: PageTransitionEvent) => {
+      if (e.persisted) setSubmitting(false);
+    };
+    window.addEventListener("pageshow", onShow);
+    return () => window.removeEventListener("pageshow", onShow);
+  }, []);
 
   async function handleDonate() {
-    if (!donorName || finalAmount < 10) {
-      setError("Please enter your name and a valid amount.");
+    setTouched(true);
+    if (!donorName.trim() || !amountValid) {
+      setError(
+        !donorName.trim()
+          ? "Please enter your name."
+          : `Please enter a whole amount between ৳${MIN_AMOUNT} and ৳${MAX_AMOUNT.toLocaleString()}.`
+      );
       return;
     }
     setSubmitting(true);
@@ -53,12 +77,12 @@ export function Donation({ t }: { t: Dict }) {
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="bg-card dark:bg-card rounded-3xl p-8 border border-border shadow-sm">
-            <div role="radiogroup" aria-label="Donation frequency" className="flex rounded-xl overflow-hidden border border-border mb-6">
+            <div role="group" aria-label="Donation frequency" className="flex rounded-xl overflow-hidden border border-border mb-6">
               {([["once", t.donation.once], ["monthly", t.donation.monthly]] as const).map(([v, l]) => (
                 <button
                   key={v}
-                  role="radio"
-                  aria-checked={type === v}
+                  type="button"
+                  aria-pressed={type === v}
                   onClick={() => setType(v)}
                   className={`flex-1 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset ${
                     type === v ? "bg-primary text-white" : "text-muted-foreground hover:text-foreground"
@@ -70,36 +94,44 @@ export function Donation({ t }: { t: Dict }) {
             </div>
 
             <div className="mb-4 space-y-3">
-              <label htmlFor="donor-name" className="sr-only">
-                Your full name
-              </label>
-              <input
-                id="donor-name"
-                placeholder="Your full name"
-                required
-                value={donorName}
-                onChange={(e) => setDonorName(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-border bg-input-background dark:bg-muted/30 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm"
-              />
-              <label htmlFor="donor-email" className="sr-only">
-                Email (optional)
-              </label>
-              <input
-                id="donor-email"
-                type="email"
-                placeholder="Email (optional)"
-                value={donorEmail}
-                onChange={(e) => setDonorEmail(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-border bg-input-background dark:bg-muted/30 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm"
-              />
+              <div>
+                <label htmlFor="donor-name" className="block text-sm font-medium text-foreground mb-1.5">
+                  Your full name
+                </label>
+                <input
+                  id="donor-name"
+                  autoComplete="name"
+                  required
+                  maxLength={100}
+                  value={donorName}
+                  onChange={(e) => setDonorName(e.target.value)}
+                  aria-invalid={nameError || undefined}
+                  aria-describedby={nameError ? "donation-error" : undefined}
+                  className={`${inputClass} ${nameError ? "border-destructive" : "border-border"}`}
+                />
+              </div>
+              <div>
+                <label htmlFor="donor-email" className="block text-sm font-medium text-foreground mb-1.5">
+                  Email (optional, for your receipt)
+                </label>
+                <input
+                  id="donor-email"
+                  type="email"
+                  autoComplete="email"
+                  maxLength={254}
+                  value={donorEmail}
+                  onChange={(e) => setDonorEmail(e.target.value)}
+                  className={`${inputClass} border-border`}
+                />
+              </div>
             </div>
 
-            <div role="radiogroup" aria-label="Preset donation amount" className="grid grid-cols-3 gap-3 mb-4">
+            <div role="group" aria-label="Preset donation amount" className="grid grid-cols-3 gap-3 mb-4">
               {amounts.map((a) => (
                 <button
                   key={a}
-                  role="radio"
-                  aria-checked={amount === a && !custom}
+                  type="button"
+                  aria-pressed={amount === a && !custom}
                   onClick={() => {
                     setAmount(a);
                     setCustom("");
@@ -122,13 +154,19 @@ export function Donation({ t }: { t: Dict }) {
               <input
                 id="donor-custom-amount"
                 type="number"
+                inputMode="numeric"
+                min={MIN_AMOUNT}
+                max={MAX_AMOUNT}
+                step={1}
                 value={custom}
                 placeholder="Enter amount"
                 onChange={(e) => {
                   setCustom(e.target.value);
                   setAmount(0);
                 }}
-                className="w-full px-4 py-2.5 rounded-xl border border-border bg-input-background dark:bg-muted/30 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm"
+                aria-invalid={amountError || undefined}
+                aria-describedby={amountError ? "donation-error" : undefined}
+                className={`${inputClass} ${amountError ? "border-destructive" : "border-border"}`}
               />
             </div>
 
@@ -139,13 +177,15 @@ export function Donation({ t }: { t: Dict }) {
               ].map(({ title, icon: Icon, amt }) => (
                 <button
                   key={title}
+                  type="button"
+                  aria-pressed={amount === amt && !custom}
                   onClick={() => {
                     setAmount(amt);
                     setCustom("");
                   }}
                   className="flex items-center gap-2 p-3 rounded-xl border border-border hover:border-primary hover:bg-primary/5 transition-colors cursor-pointer group text-left"
                 >
-                  <Icon size={14} className="text-primary group-hover:scale-110 transition-transform shrink-0" />
+                  <Icon size={14} aria-hidden="true" className="text-primary group-hover:scale-110 transition-transform shrink-0" />
                   <span className="font-medium text-foreground">{title}</span>
                 </button>
               ))}
@@ -153,17 +193,20 @@ export function Donation({ t }: { t: Dict }) {
 
             {type === "monthly" && <p className="text-xs text-muted-foreground mb-4">{t.donation.monthlyNote}</p>}
 
-            <p role="status" aria-live="polite" className={error ? "text-sm text-destructive mb-4" : "sr-only"}>
+            <p id="donation-error" role="alert" className={error ? "text-sm text-destructive mb-4" : "sr-only"}>
               {error ?? ""}
             </p>
 
             <button
+              type="button"
               onClick={handleDonate}
               disabled={submitting}
-              className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-orange-600 text-white py-4 rounded-xl font-bold text-base transition-colors shadow-lg shadow-orange-500/20 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+              className="w-full flex items-center justify-center gap-2 bg-cta hover:bg-cta-hover text-white py-4 rounded-xl font-bold text-base transition-colors shadow-lg shadow-orange-500/20 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               <Heart size={18} aria-hidden="true" />
-              {submitting ? "Redirecting to bKash..." : `${t.donation.donate} — ৳${finalAmount.toLocaleString()}`}
+              {submitting
+                ? "Redirecting to bKash..."
+                : `${t.donation.donate} — ৳${(Number.isFinite(finalAmount) ? finalAmount : 0).toLocaleString()}${type === "monthly" ? " / month" : ""}`}
             </button>
 
             <p className="text-center text-xs text-muted-foreground mt-4 flex items-center justify-center gap-1">
@@ -184,7 +227,7 @@ export function Donation({ t }: { t: Dict }) {
 
             <div className="mt-8 p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/10">
               <div className="flex items-start gap-3">
-                <DollarSign size={22} className="text-primary mt-0.5 shrink-0" />
+                <DollarSign size={22} aria-hidden="true" className="text-primary mt-0.5 shrink-0" />
                 <div>
                   <div className="font-semibold text-foreground mb-1">Your Impact</div>
                   <ul className="text-sm text-muted-foreground space-y-1">

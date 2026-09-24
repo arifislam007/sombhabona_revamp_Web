@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { HandHelping, GraduationCap, Wrench, ArrowRight, CheckCircle2 } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
 import { siteConfig } from "@/content/site";
-import { IMGS } from "@/lib/images";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 
@@ -45,7 +44,7 @@ export function FocusPillars({ t }: { t: Dict }) {
       stat: [`${siteConfig.stats.activeVolunteers}+`, "Active Volunteers"],
       cta: t.hero.cta2,
       target: "volunteer",
-      image: IMGS.volunteer1,
+      image: "/gallery/volunteer-team.jpg",
     },
     education: {
       icon: GraduationCap,
@@ -62,7 +61,7 @@ export function FocusPillars({ t }: { t: Dict }) {
       stat: [`${siteConfig.stats.studentsEducated.toLocaleString()}+`, "Students Educated"],
       cta: "Sponsor a Child",
       target: "donation",
-      image: IMGS.volunteer2,
+      image: "/gallery/education-new-books.jpg",
     },
     skillDevelopment: {
       icon: Wrench,
@@ -79,7 +78,7 @@ export function FocusPillars({ t }: { t: Dict }) {
       stat: [`${siteConfig.stats.womenTrainedTailoring}+`, "Women Trained"],
       cta: "Explore Programs",
       target: "programs",
-      image: IMGS.relief1,
+      image: "/gallery/training-ict-program.jpg",
     },
   };
 
