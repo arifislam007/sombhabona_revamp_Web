@@ -11,7 +11,7 @@ export default function DonateFailedPage() {
       </p>
       <Link
         href="/#donation"
-        className="mt-8 inline-block rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-blue-800"
+        className="mt-8 inline-block rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary-hover"
       >
         Try Again
       </Link>

@@ -2,54 +2,58 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #1e3a8a;
-  --primary-foreground: #ffffff;
-  --secondary: #16a34a;
-  --secondary-foreground: #ffffff;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #c2410c;
-  --accent-foreground: #ffffff;
-  --cta: #c2410c;
-  --cta-hover: #9a3412;
-  --destructive: #dc2626;
+  /* Brand: Shonar Green #0B6E4F, Sunrise Yellow #FFC727, Sprout Lime #8CCB3F,
+     Forest Ink #0E2A22, Mint Mist #E4F3EA, Paper Cream #FBF8EF */
+  --background: #fbf8ef;
+  --foreground: #0e2a22;
+  --card: #fefcf6;
+  --card-foreground: #0e2a22;
+  --popover: #fefcf6;
+  --popover-foreground: #0e2a22;
+  --primary: #0b6e4f;
+  --primary-hover: #095a41;
+  --primary-foreground: #fbf8ef;
+  --secondary: #8ccb3f;
+  --secondary-foreground: #0e2a22;
+  --muted: #e4f3ea;
+  --muted-foreground: #55685f;
+  --accent: #ffc727;
+  --accent-foreground: #0e2a22;
+  --cta: #ffc727;
+  --cta-hover: #e7b726;
+  --destructive: #b42318;
   --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
+  --border: rgba(14, 42, 34, 0.14);
   --input: transparent;
-  --input-background: #f8fafc;
-  --ring: #1e3a8a;
+  --input-background: #fefcf6;
+  --ring: #0b6e4f;
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: #0a0f1e;
-  --foreground: #f1f5f9;
-  --card: #111827;
-  --card-foreground: #f1f5f9;
-  --popover: #111827;
-  --popover-foreground: #f1f5f9;
-  --primary: #3b82f6;
-  --primary-foreground: #ffffff;
-  --secondary: #22c55e;
-  --secondary-foreground: #ffffff;
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
-  --accent: #fb923c;
-  --accent-foreground: #ffffff;
-  --cta: #c2410c;
-  --cta-hover: #9a3412;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: rgba(255, 255, 255, 0.08);
-  --input: rgba(255, 255, 255, 0.06);
-  --input-background: #1e293b;
-  --ring: #3b82f6;
+  --background: #0a1f19;
+  --foreground: #fbf8ef;
+  --card: #0e2a22;
+  --card-foreground: #fbf8ef;
+  --popover: #0e2a22;
+  --popover-foreground: #fbf8ef;
+  --primary: #8ccb3f;
+  --primary-hover: #a3d962;
+  --primary-foreground: #0e2a22;
+  --secondary: #0b6e4f;
+  --secondary-foreground: #fbf8ef;
+  --muted: #0d382b;
+  --muted-foreground: #b4bab2;
+  --accent: #ffc727;
+  --accent-foreground: #0e2a22;
+  --cta: #ffc727;
+  --cta-hover: #e7b726;
+  --destructive: #f97066;
+  --destructive-foreground: #0e2a22;
+  --border: rgba(228, 243, 234, 0.14);
+  --input: rgba(228, 243, 234, 0.08);
+  --input-background: #0d382b;
+  --ring: #8ccb3f;
 }
 
 @theme inline {
@@ -60,6 +64,7 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -101,7 +106,7 @@
   }
 
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring;
   }
 
   body {

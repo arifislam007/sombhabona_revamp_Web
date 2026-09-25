@@ -22,11 +22,11 @@ export function Volunteer({ t }: { t: Dict }) {
     "w-full px-4 py-2.5 rounded-xl border border-border bg-input-background dark:bg-muted/30 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm";
 
   return (
-    <section id="volunteer" className="py-20 lg:py-28 bg-white dark:bg-background">
+    <section id="volunteer" className="py-20 lg:py-28 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <Reveal>
-            <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-3">
+            <span className="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-3">
               {t.volunteer.label}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
@@ -43,7 +43,7 @@ export function Volunteer({ t }: { t: Dict }) {
               </div>
               <div className="w-px bg-border" />
               <div>
-                <div className="font-display text-2xl font-bold text-secondary">
+                <div className="font-display text-2xl font-bold text-primary">
                   {siteConfig.stats.districtsReached}
                 </div>
                 <div className="text-xs text-muted-foreground">Districts Reached Across Bangladesh</div>
@@ -56,7 +56,7 @@ export function Volunteer({ t }: { t: Dict }) {
                   key={title}
                   className="flex gap-4 p-4 rounded-2xl border border-border hover:border-primary/30 hover:bg-primary/5 transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors text-primary">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors text-primary">
                     <Icon size={18} />
                   </div>
                   <div>
@@ -71,7 +71,7 @@ export function Volunteer({ t }: { t: Dict }) {
           <Reveal delay={150} className="bg-card dark:bg-card rounded-3xl p-8 border border-border shadow-sm">
             {status === "success" ? (
               <div role="status" aria-live="polite" className="text-center py-12">
-                <CheckCircle size={48} className="text-secondary mx-auto mb-4" aria-hidden="true" />
+                <CheckCircle size={48} className="text-primary mx-auto mb-4" aria-hidden="true" />
                 <h3 className="font-bold text-foreground text-xl mb-2">Application Submitted!</h3>
                 <p className="text-muted-foreground">Thank you for your willingness to serve. We will contact you shortly.</p>
               </div>
@@ -152,7 +152,7 @@ export function Volunteer({ t }: { t: Dict }) {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-blue-800 text-white py-3 rounded-xl font-semibold transition-colors disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground py-3 rounded-xl font-semibold transition-colors disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   <Users size={16} aria-hidden="true" /> {status === "submitting" ? "Submitting..." : t.volunteer.submit}
                 </button>

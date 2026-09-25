@@ -11,11 +11,11 @@ import { SectionHeading } from "@/components/section-heading";
 const icons = [BookOpen, GraduationCap, Wrench, HandHelping, Users2, Building2] as const;
 const colors = [
   { color: "text-primary", bg: "bg-primary/10" },
-  { color: "text-accent", bg: "bg-accent/10" },
-  { color: "text-secondary", bg: "bg-secondary/10" },
-  { color: "text-pink-500", bg: "bg-pink-100 dark:bg-pink-500/10" },
-  { color: "text-purple-500", bg: "bg-purple-100 dark:bg-purple-500/10" },
-  { color: "text-emerald-500", bg: "bg-emerald-100 dark:bg-emerald-500/10" },
+  { color: "text-primary", bg: "bg-primary/10" },
+  { color: "text-primary", bg: "bg-secondary/25" },
+  { color: "text-primary", bg: "bg-muted" },
+  { color: "text-primary", bg: "bg-primary/10" },
+  { color: "text-primary", bg: "bg-secondary/25" },
 ];
 const images = [
   "/gallery/program-school-lesson.jpg", // Pushpokoli School
@@ -36,7 +36,7 @@ export function Programs({ t }: { t: Dict }) {
   const filtered = filter === "all" ? programs : programs.filter((p) => p.pillar === filter);
 
   return (
-    <section id="programs" className="py-20 lg:py-28 bg-muted/30 dark:bg-muted/10">
+    <section id="programs" className="py-20 lg:py-28 bg-muted/60 dark:bg-muted/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.programs.label} title={t.programs.title} description={t.programs.sub} className="mb-10" />
 
@@ -48,7 +48,7 @@ export function Programs({ t }: { t: Dict }) {
               aria-pressed={filter === key}
               className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
                 filter === key
-                  ? "bg-primary text-white"
+                  ? "bg-primary text-primary-foreground"
                   : "bg-card text-muted-foreground border border-border hover:border-primary hover:text-primary"
               }`}
             >
@@ -81,7 +81,7 @@ export function Programs({ t }: { t: Dict }) {
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <span className="absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/90 text-foreground">
+                  <span className="absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-card/90 text-foreground">
                     {pillarLabels[program.pillar]}
                   </span>
                 </div>

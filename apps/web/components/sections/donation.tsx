@@ -71,7 +71,7 @@ export function Donation({ t }: { t: Dict }) {
   }
 
   return (
-    <section id="donation" className="py-20 lg:py-28 bg-muted/30 dark:bg-muted/10">
+    <section id="donation" className="py-20 lg:py-28 bg-muted/60 dark:bg-muted/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.donation.label} title={t.donation.title} className="mb-14" />
 
@@ -85,7 +85,7 @@ export function Donation({ t }: { t: Dict }) {
                   aria-pressed={type === v}
                   onClick={() => setType(v)}
                   className={`flex-1 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset ${
-                    type === v ? "bg-primary text-white" : "text-muted-foreground hover:text-foreground"
+                    type === v ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {l}
@@ -138,7 +138,7 @@ export function Donation({ t }: { t: Dict }) {
                   }}
                   className={`py-2.5 rounded-xl text-sm font-semibold border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                     amount === a && !custom
-                      ? "border-primary bg-primary text-white"
+                      ? "border-primary bg-primary text-primary-foreground"
                       : "border-border text-foreground hover:border-primary hover:text-primary"
                   }`}
                 >
@@ -201,7 +201,7 @@ export function Donation({ t }: { t: Dict }) {
               type="button"
               onClick={handleDonate}
               disabled={submitting}
-              className="w-full flex items-center justify-center gap-2 bg-cta hover:bg-cta-hover text-white py-4 rounded-xl font-bold text-base transition-colors shadow-lg shadow-orange-500/20 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+              className="w-full flex items-center justify-center gap-2 border-2 border-accent-foreground bg-cta hover:bg-cta-hover text-accent-foreground py-4 rounded-xl font-bold text-base transition-colors shadow-lg shadow-black/20 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               <Heart size={18} aria-hidden="true" />
               {submitting

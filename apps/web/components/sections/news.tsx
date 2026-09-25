@@ -26,12 +26,12 @@ const posts = [
 
 const catColors: Record<string, string> = {
   News: "bg-primary/10 text-primary",
-  Event: "bg-secondary/10 text-secondary",
+  Event: "bg-secondary/25 text-primary",
 };
 
 export function News({ t }: { t: Dict }) {
   return (
-    <section id="news" className="py-20 lg:py-28 bg-white dark:bg-background">
+    <section id="news" className="py-20 lg:py-28 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.news.label} title={t.news.title} size="sm" className="mb-14" />
         <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
@@ -64,7 +64,7 @@ export function News({ t }: { t: Dict }) {
                 </div>
                 <h3 className="font-bold text-foreground mb-2 leading-snug">{title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">{desc}</p>
-                <button className="flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent transition-colors group-hover:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm">
+                <button className="flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary transition-colors group-hover:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm">
                   {t.news.readMore} <ArrowRight size={14} aria-hidden="true" />
                 </button>
               </div>

@@ -17,13 +17,13 @@ export function Contact({ t }: { t: Dict }) {
 
   const infoItems = [
     { icon: MapPin, label: "Office Address", value: siteConfig.contact.address, color: "text-primary" },
-    { icon: Phone, label: "Phone", value: siteConfig.contact.phones.join(" · "), color: "text-secondary" },
-    { icon: Mail, label: "Email", value: siteConfig.contact.emails.join(" · "), color: "text-accent" },
-    { icon: MessageCircle, label: "WhatsApp", value: siteConfig.contact.whatsapp.replace("https://wa.me/", "+"), color: "text-purple-500" },
+    { icon: Phone, label: "Phone", value: siteConfig.contact.phones.join(" · "), color: "text-primary" },
+    { icon: Mail, label: "Email", value: siteConfig.contact.emails.join(" · "), color: "text-primary" },
+    { icon: MessageCircle, label: "WhatsApp", value: siteConfig.contact.whatsapp.replace("https://wa.me/", "+"), color: "text-primary" },
   ];
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-white dark:bg-background">
+    <section id="contact" className="py-20 lg:py-28 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.contact.label} title={t.contact.title} size="sm" className="mb-14" />
 
@@ -47,7 +47,7 @@ export function Contact({ t }: { t: Dict }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Sombhabona on Facebook (opens in a new tab)"
-                className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground hover:bg-blue-600 hover:text-white transition-colors border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 <FacebookIcon size={16} />
               </a>
@@ -56,7 +56,7 @@ export function Contact({ t }: { t: Dict }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Chat with Sombhabona on WhatsApp (opens in a new tab)"
-                className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground hover:bg-green-500 hover:text-white transition-colors border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 <MessageCircle size={16} aria-hidden="true" />
               </a>
@@ -79,7 +79,7 @@ export function Contact({ t }: { t: Dict }) {
           <div className="lg:col-span-3 bg-card dark:bg-card rounded-3xl p-8 border border-border shadow-sm">
             {status === "success" ? (
               <div role="status" aria-live="polite" className="text-center py-16">
-                <CheckCircle size={48} className="text-secondary mx-auto mb-4" aria-hidden="true" />
+                <CheckCircle size={48} className="text-primary mx-auto mb-4" aria-hidden="true" />
                 <h3 className="font-bold text-foreground text-xl mb-2">Message Sent!</h3>
                 <p className="text-muted-foreground">Thank you for reaching out. We will respond as soon as possible.</p>
               </div>
@@ -150,7 +150,7 @@ export function Contact({ t }: { t: Dict }) {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="flex items-center gap-2 bg-primary hover:bg-blue-800 text-white px-8 py-3 rounded-xl font-semibold transition-colors disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="flex items-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground px-8 py-3 rounded-xl font-semibold transition-colors disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   <Send size={16} aria-hidden="true" /> {status === "submitting" ? "Sending..." : t.contact.send}
                 </button>

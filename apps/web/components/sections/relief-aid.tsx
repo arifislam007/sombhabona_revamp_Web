@@ -16,19 +16,19 @@ export function ReliefAid({ t }: { t: Dict }) {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-br from-[#0c2461] to-[#1E3A8A] text-white overflow-hidden">
+    <section className="py-20 lg:py-28 bg-gradient-to-br from-[#0B6E4F] to-[#0E2A22] text-[#FBF8EF] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <Reveal>
             <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
-              <HandHelping size={14} className="text-cyan-300" aria-hidden="true" /> {t.relief.label}
+              <HandHelping size={14} className="text-accent" aria-hidden="true" /> {t.relief.label}
             </div>
             <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6 leading-tight">{t.relief.title}</h2>
             <p className="text-white/80 leading-relaxed mb-8 text-lg">{t.relief.sub}</p>
             <ul className="space-y-3">
               {t.relief.points.map((point) => (
                 <li key={point} className="flex items-start gap-3 text-white/85">
-                  <CheckCircle size={18} className="text-cyan-300 mt-0.5 shrink-0" />
+                  <CheckCircle size={18} className="text-accent mt-0.5 shrink-0" />
                   <span>{point}</span>
                 </li>
               ))}

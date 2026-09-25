@@ -28,17 +28,17 @@ export function ImpactStats({ t }: { t: Dict }) {
   const years = useCounter(new Date().getFullYear() - siteConfig.foundedYear, active);
 
   const stats = [
-    { value: students, suffix: "+", label: t.stats.students, icon: GraduationCap, color: "text-primary", bg: "bg-primary/10" },
-    { value: beneficiaries, suffix: "+", label: t.stats.beneficiaries, icon: Heart, color: "text-accent", bg: "bg-accent/10" },
-    { value: districts, suffix: "", label: t.stats.districts, icon: MapPin, color: "text-secondary", bg: "bg-secondary/10" },
-    { value: years, suffix: "+", label: t.stats.years, icon: Calendar, color: "text-yellow-500", bg: "bg-yellow-100 dark:bg-yellow-500/10" },
+    { value: students, suffix: "+", label: t.stats.students, icon: GraduationCap, color: "text-secondary", bg: "bg-secondary/15" },
+    { value: beneficiaries, suffix: "+", label: t.stats.beneficiaries, icon: Heart, color: "text-accent", bg: "bg-accent/15" },
+    { value: districts, suffix: "", label: t.stats.districts, icon: MapPin, color: "text-secondary", bg: "bg-secondary/15" },
+    { value: years, suffix: "+", label: t.stats.years, icon: Calendar, color: "text-accent", bg: "bg-accent/15" },
   ];
 
   return (
     <section
       id="impact"
       ref={ref}
-      className="py-20 lg:py-28 bg-gradient-to-br from-primary to-[#1a327a] dark:from-gray-900 dark:to-gray-800 text-white"
+      className="py-20 lg:py-28 bg-[#0E2A22] dark:bg-[#0A1F19] text-[#FBF8EF]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.stats.label} title={t.stats.title} size="sm" light className="mb-14" />
@@ -50,7 +50,7 @@ export function ImpactStats({ t }: { t: Dict }) {
               >
                 <Icon size={26} className={color} />
               </div>
-              <div className="font-display text-3xl font-bold mb-1">
+              <div className="font-display text-3xl font-bold mb-1 text-secondary">
                 {value.toLocaleString()}
                 {suffix}
               </div>

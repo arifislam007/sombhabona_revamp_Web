@@ -16,7 +16,7 @@ const clippings = [
 
 export function Press({ t }: { t: Dict }) {
   return (
-    <section id="press" className="py-20 lg:py-28 bg-muted/30 dark:bg-muted/10">
+    <section id="press" className="py-20 lg:py-28 bg-muted/60 dark:bg-muted/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.press.label} title={t.press.title} description={t.press.sub} className="mb-14" />
 

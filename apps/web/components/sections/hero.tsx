@@ -26,16 +26,16 @@ export function Hero({ t }: { t: Dict }) {
         sizes="100vw"
         className="object-cover object-[60%_30%]"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0f1f52]/95 via-[#0f1f52]/70 to-[#0f1f52]/10" />
-      <div className="absolute inset-0 bg-[#0f1f52]/40 lg:hidden" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0E2A22]/90 via-[#0E2A22]/60 to-[#0E2A22]/10" />
+      <div className="absolute inset-0 bg-[#0E2A22]/45 lg:hidden" />
       <motion.div
         initial={{ y: 16 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white pt-24 pb-16"
       >
-        <p className="mb-6 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-orange-200">
-          <span aria-hidden="true" className="h-px w-8 bg-orange-300" />
+        <p className="mb-6 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+          <span aria-hidden="true" className="h-px w-8 bg-accent" />
           {t.hero.since}
         </p>
         <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-6 max-w-3xl text-balance">
@@ -47,7 +47,7 @@ export function Hero({ t }: { t: Dict }) {
             href="#donation"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center gap-2 bg-cta hover:bg-cta-hover text-white px-8 py-4 rounded-full font-bold text-lg transition-colors shadow-lg shadow-orange-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+            className="flex items-center justify-center gap-2 border-2 border-accent-foreground bg-cta hover:bg-cta-hover text-accent-foreground px-8 py-4 rounded-full font-bold text-lg transition-colors shadow-lg shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
           >
             <Heart size={20} aria-hidden="true" /> {t.hero.cta1}
           </motion.a>

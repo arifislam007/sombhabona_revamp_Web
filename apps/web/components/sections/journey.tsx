@@ -33,7 +33,7 @@ export function Journey({ t }: { t: Dict }) {
                     />
                     <span
                       aria-hidden="true"
-                      className="absolute top-3 left-3 flex h-8 w-8 items-center justify-center rounded-full bg-cta text-sm font-bold text-white"
+                      className="absolute top-3 left-3 flex h-8 w-8 items-center justify-center rounded-full border-2 border-accent-foreground bg-cta text-sm font-bold text-accent-foreground"
                     >
                       {i + 1}
                     </span>

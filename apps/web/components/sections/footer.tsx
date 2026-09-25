@@ -22,7 +22,7 @@ export function Footer({ t }: { t: Dict }) {
   ];
 
   return (
-    <footer className="bg-[#0c1f4a] dark:bg-gray-950 text-white">
+    <footer className="bg-[#0E2A22] dark:bg-[#0A1F19] text-[#FBF8EF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div className="lg:col-span-2">
@@ -34,7 +34,7 @@ export function Footer({ t }: { t: Dict }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Sombhabona on Facebook (opens in a new tab)"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-cta flex items-center justify-center text-white/70 hover:text-white transition-colors border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-cta flex items-center justify-center text-accent-foreground/70 hover:text-accent-foreground transition-colors border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <FacebookIcon size={15} />
               </a>
@@ -43,7 +43,7 @@ export function Footer({ t }: { t: Dict }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Chat with Sombhabona on WhatsApp (opens in a new tab)"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-cta flex items-center justify-center text-white/70 hover:text-white transition-colors border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-cta flex items-center justify-center text-accent-foreground/70 hover:text-accent-foreground transition-colors border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <MessageCircle size={15} aria-hidden="true" />
               </a>
@@ -68,7 +68,7 @@ export function Footer({ t }: { t: Dict }) {
               {t.footer.newsletter}
             </label>
             {status === "success" ? (
-              <p role="status" aria-live="polite" className="text-sm text-emerald-300">
+              <p role="status" aria-live="polite" className="text-sm text-secondary">
                 Thanks for subscribing!
               </p>
             ) : (
@@ -93,7 +93,7 @@ export function Footer({ t }: { t: Dict }) {
                   type="submit"
                   disabled={status === "submitting"}
                   aria-label="Subscribe"
-                  className="bg-cta hover:bg-cta-hover text-white px-3 py-2.5 rounded-xl transition-colors text-sm font-medium disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  className="border-2 border-accent-foreground bg-cta hover:bg-cta-hover text-accent-foreground px-3 py-2.5 rounded-xl transition-colors text-sm font-medium disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
                   <Send size={14} aria-hidden="true" />
                 </button>
@@ -102,7 +102,7 @@ export function Footer({ t }: { t: Dict }) {
             <div className="mt-6">
               <button
                 onClick={() => scrollTo("donation")}
-                className="w-full flex items-center justify-center gap-2 bg-cta hover:bg-cta-hover text-white py-3 rounded-xl font-semibold text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-full flex items-center justify-center gap-2 border-2 border-accent-foreground bg-cta hover:bg-cta-hover text-accent-foreground py-3 rounded-xl font-semibold text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <Heart size={14} aria-hidden="true" /> {t.nav.donate}
               </button>

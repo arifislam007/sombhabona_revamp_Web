@@ -19,21 +19,21 @@ const stories = [
     tag: "Sombhabona ICT Graduate",
     quote:
       "The ICT training gave me practical computer skills I never had access to before, and the confidence to look for work in the field.",
-    color: "bg-secondary/10 text-secondary",
+    color: "bg-secondary/25 text-primary",
     img: "/gallery/training-ict-program.jpg",
   },
   {
     tag: "Onindito Naree Participant",
     quote:
       "The skill training program gave me a way to support my family and a sense of independence I hadn't felt before.",
-    color: "bg-accent/10 text-accent",
+    color: "bg-primary/10 text-primary",
     img: "/gallery/craft-clay-flowers-1.jpg",
   },
   {
     tag: "Community Volunteer",
     quote:
       "Volunteering with Sombhabona showed me how much difference consistent, local support can make for a family.",
-    color: "bg-purple-100 dark:bg-purple-500/10 text-purple-600",
+    color: "bg-muted text-primary",
     img: "/gallery/volunteer-team.jpg",
   },
 ];
@@ -43,7 +43,7 @@ export function Stories({ t }: { t: Dict }) {
   const story = stories[idx];
 
   return (
-    <section id="stories" className="py-20 lg:py-28 bg-white dark:bg-background">
+    <section id="stories" className="py-20 lg:py-28 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.stories.label} title={t.stories.title} className="mb-6" />
         <p className="text-center text-xs text-muted-foreground mb-8">{t.stories.note}</p>
@@ -68,13 +68,13 @@ export function Stories({ t }: { t: Dict }) {
               </AnimatePresence>
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
-                <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${story.color} bg-white/90`}>
+                <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${story.color} bg-card/90`}>
                   {story.tag}
                 </span>
               </div>
             </div>
             <div className="bg-card dark:bg-card p-8 lg:p-10 flex flex-col justify-center min-h-[220px]">
-              <QuoteIcon size={32} className="text-accent mb-4" aria-hidden="true" />
+              <QuoteIcon size={32} className="text-primary mb-4" aria-hidden="true" />
               <AnimatePresence mode="wait">
                 <motion.p
                   key={story.quote}
@@ -94,7 +94,7 @@ export function Stories({ t }: { t: Dict }) {
             <button
               onClick={() => setIdx((idx - 1 + stories.length) % stories.length)}
               aria-label="Previous story"
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-colors text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               <ChevronLeft size={18} aria-hidden="true" />
             </button>
@@ -112,7 +112,7 @@ export function Stories({ t }: { t: Dict }) {
             <button
               onClick={() => setIdx((idx + 1) % stories.length)}
               aria-label="Next story"
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-colors text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               <ChevronRight size={18} aria-hidden="true" />
             </button>

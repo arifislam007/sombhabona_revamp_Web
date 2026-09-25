@@ -38,7 +38,7 @@ export function AdminNav() {
                   href={t.href}
                   aria-current={active ? "page" : undefined}
                   className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                    active ? "bg-primary text-white" : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    active ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   }`}
                 >
                   {t.label}

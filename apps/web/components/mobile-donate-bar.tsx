@@ -38,7 +38,7 @@ export function MobileDonateBar({ t }: { t: Dict }) {
     >
       <a
         href="#donation"
-        className="flex items-center justify-center gap-2 w-full bg-cta hover:bg-cta-hover text-white py-3 rounded-full font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2"
+        className="flex items-center justify-center gap-2 w-full border-2 border-accent-foreground bg-cta hover:bg-cta-hover text-accent-foreground py-3 rounded-full font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2"
       >
         <Heart size={18} aria-hidden="true" /> {t.nav.donate}
       </a>

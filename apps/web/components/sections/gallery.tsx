@@ -39,7 +39,7 @@ export function Gallery({ t }: { t: Dict }) {
   const filtered = cat === 0 ? allImgs : allImgs.filter((i) => i.cat === cat);
 
   return (
-    <section id="gallery" className="py-20 lg:py-28 bg-muted/30 dark:bg-muted/10">
+    <section id="gallery" className="py-20 lg:py-28 bg-muted/60 dark:bg-muted/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.gallery.label} title={t.gallery.title} className="mb-10">
           <div role="group" aria-label="Filter gallery by category" className="mt-6 flex flex-wrap justify-center gap-2">
@@ -50,7 +50,7 @@ export function Gallery({ t }: { t: Dict }) {
                 aria-pressed={cat === i}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
                   cat === i
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-primary-foreground"
                     : "bg-card text-muted-foreground border border-border hover:border-primary hover:text-primary"
                 }`}
               >

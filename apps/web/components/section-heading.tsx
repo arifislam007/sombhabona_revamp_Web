@@ -22,7 +22,7 @@ export function SectionHeading({
     <Reveal className={`text-center ${className}`}>
       <span
         className={`inline-block font-semibold text-sm uppercase tracking-widest mb-3 ${
-          light ? "text-orange-300" : "text-accent"
+          light ? "text-accent" : "text-primary"
         }`}
       >
         {eyebrow}

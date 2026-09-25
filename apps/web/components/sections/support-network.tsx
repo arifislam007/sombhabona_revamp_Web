@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export function SupportNetwork({ t }: { t: Dict }) {
   return (
-    <section className="py-16 bg-white dark:bg-background border-y border-border">
+    <section className="py-16 bg-background border-y border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.network.label} title={t.network.title} size="sm" className="mb-10" />
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">

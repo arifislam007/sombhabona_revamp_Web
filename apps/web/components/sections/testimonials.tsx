@@ -30,7 +30,7 @@ const items = [
 
 export function Testimonials({ t }: { t: Dict }) {
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-br from-[#f0f7ff] to-[#f0fdf4] dark:from-muted/5 dark:to-muted/10">
+    <section className="py-20 lg:py-28 bg-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.testimonials.label} title={t.testimonials.title} size="sm" className="mb-14" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -46,7 +46,7 @@ export function Testimonials({ t }: { t: Dict }) {
             >
               <div className="flex mb-4" aria-hidden="true">
                 {Array.from({ length: stars }).map((_, i) => (
-                  <Star key={i} size={14} className="text-yellow-400 fill-yellow-400" />
+                  <Star key={i} size={14} className="text-accent-foreground fill-accent" />
                 ))}
               </div>
               <p className="sr-only">{stars} out of 5 stars.</p>

@@ -31,8 +31,8 @@ export function FocusPillars({ t }: { t: Dict }) {
   > = {
     volunteering: {
       icon: HandHelping,
-      color: "text-secondary",
-      bg: "bg-secondary/10",
+      color: "text-primary",
+      bg: "bg-secondary/25",
       title: t.pillars.volunteering,
       description:
         "Sombhabona runs on the time and energy of dedicated volunteers, teaching classes, running events, and reaching communities across Bangladesh.",
@@ -65,8 +65,8 @@ export function FocusPillars({ t }: { t: Dict }) {
     },
     skillDevelopment: {
       icon: Wrench,
-      color: "text-accent",
-      bg: "bg-accent/10",
+      color: "text-primary",
+      bg: "bg-primary/10",
       title: t.pillars.skillDevelopment,
       description:
         "From Onindito Naree's tailoring workshop to Sombhabona ICT's digital training, we equip underprivileged youth and women with skills that lead directly to income.",
@@ -88,7 +88,7 @@ export function FocusPillars({ t }: { t: Dict }) {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="py-20 lg:py-28 bg-white dark:bg-background">
+    <section className="py-20 lg:py-28 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={t.pillars.label} title={t.pillars.title} description={t.pillars.sub} className="mb-10" />
 
@@ -105,7 +105,7 @@ export function FocusPillars({ t }: { t: Dict }) {
                   onClick={() => setActive(key)}
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
                     active === key
-                      ? "bg-primary text-white border-primary"
+                      ? "bg-primary text-primary-foreground border-primary"
                       : "text-foreground border-border hover:border-primary hover:text-primary"
                   }`}
                 >
@@ -161,7 +161,7 @@ export function FocusPillars({ t }: { t: Dict }) {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => scrollTo(current.target)}
-                className="flex items-center gap-2 bg-primary hover:bg-blue-800 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="flex items-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 {current.cta} <ArrowRight size={14} aria-hidden="true" />
               </motion.button>

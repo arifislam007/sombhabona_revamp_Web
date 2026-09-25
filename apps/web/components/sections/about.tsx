@@ -40,11 +40,11 @@ function Avatar({ member, size }: { member: TeamMember; size: number }) {
 
 export function About({ t }: { t: Dict }) {
   return (
-    <section id="about" className="py-20 lg:py-28 bg-white dark:bg-background">
+    <section id="about" className="py-20 lg:py-28 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <Reveal>
-            <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-3">
+            <span className="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-3">
               {t.about.label}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
@@ -55,7 +55,7 @@ export function About({ t }: { t: Dict }) {
             <div className="grid sm:grid-cols-2 gap-6 mb-10">
               {[
                 { icon: Shield, title: t.about.mission, text: t.about.missionText, color: "text-primary" },
-                { icon: Star, title: t.about.vision, text: t.about.visionText, color: "text-secondary" },
+                { icon: Star, title: t.about.vision, text: t.about.visionText, color: "text-primary" },
               ].map(({ icon: Icon, title, text, color }) => (
                 <div key={title} className="p-5 rounded-2xl bg-muted/50 dark:bg-muted/20 border border-border">
                   <Icon size={22} className={`${color} mb-3`} />
@@ -82,10 +82,10 @@ export function About({ t }: { t: Dict }) {
 
           <Reveal delay={150}>
             <div className="bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 rounded-3xl p-6 border border-primary/10">
-              <span className="inline-block text-accent font-semibold text-xs uppercase tracking-widest mb-4">
+              <span className="inline-block text-primary font-semibold text-xs uppercase tracking-widest mb-4">
                 {t.about.founder}
               </span>
-              <QuoteIcon size={24} className="text-accent mb-3" />
+              <QuoteIcon size={24} className="text-primary mb-3" />
               <p className="font-display text-lg italic text-foreground leading-relaxed mb-4">
                 &ldquo;{t.about.founderQuote}&rdquo;
               </p>
