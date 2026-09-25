@@ -28,6 +28,16 @@ type CreatePaymentResponse = {
   statusMessage: string;
 };
 
+export type PaymentStatusResponse = {
+  paymentID?: string;
+  trxID?: string;
+  transactionStatus?: string;
+  amount?: string;
+  merchantInvoiceNumber?: string;
+  statusCode: string;
+  statusMessage: string;
+};
+
 export type ExecutePaymentResponse = {
   paymentID: string;
   trxID?: string;
@@ -106,6 +116,17 @@ export async function executeBkashPayment(paymentID: string): Promise<ExecutePay
   const token = await grantBkashToken();
 
   return bkashFetch<ExecutePaymentResponse>("/tokenized/checkout/execute", {
+    headers: { Authorization: token, "X-APP-Key": requireEnv("BKASH_APP_KEY") },
+    body: { paymentID },
+  });
+}
+
+// Ask bKash for the authoritative state of a payment (used to recover from timeouts and
+// to avoid trusting the browser's callback URL).
+export async function queryBkashPayment(paymentID: string): Promise<PaymentStatusResponse> {
+  const token = await grantBkashToken();
+
+  return bkashFetch<PaymentStatusResponse>("/tokenized/checkout/payment/status", {
     headers: { Authorization: token, "X-APP-Key": requireEnv("BKASH_APP_KEY") },
     body: { paymentID },
   });

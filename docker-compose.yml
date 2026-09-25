@@ -32,13 +32,21 @@ services:
       SMTP_USER: ${SMTP_USER:-}
       SMTP_PASSWORD: ${SMTP_PASSWORD:-}
       NOTIFY_EMAIL: ${NOTIFY_EMAIL:-info@sombhabona.org}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      ADMIN_SESSION_SECRET: ${ADMIN_SESSION_SECRET:-}
+      TRUSTED_PROXY_HOPS: ${TRUSTED_PROXY_HOPS:-1}
       BKASH_BASE_URL: ${BKASH_BASE_URL:-https://tokenized.sandbox.bka.sh/v1.2.0-beta}
       BKASH_APP_KEY: ${BKASH_APP_KEY:-}
       BKASH_APP_SECRET: ${BKASH_APP_SECRET:-}
       BKASH_USERNAME: ${BKASH_USERNAME:-}
       BKASH_PASSWORD: ${BKASH_PASSWORD:-}
     ports:
-      - "8065:3000"
+      # Only the reverse proxy on this host should reach the app. Set WEB_BIND=0.0.0.0 only if
+      # your proxy runs on another machine (then restrict port 8065 with a firewall).
+      - "${WEB_BIND:-127.0.0.1}:8065:3000"
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health"]
       interval: 15s

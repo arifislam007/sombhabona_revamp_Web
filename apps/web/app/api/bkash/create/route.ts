@@ -13,7 +13,7 @@ const schema = z
       .string()
       .trim()
       .max(20)
-      .regex(/^[+\d][\d\s-]*$/, "Invalid phone number")
+      .regex(/^\+?\d[\d\s-]*$/, "Invalid phone number")
       .optional()
       .or(z.literal("")),
     amount: z.number().int().min(10).max(500_000),
@@ -51,10 +51,15 @@ export async function POST(request: Request) {
       merchantInvoiceNumber: donation.id,
     });
 
-    await prisma.donation.update({
-      where: { id: donation.id },
-      data: { bkashPaymentId: payment.paymentID },
-    });
+    // The callback finds the donation by this ID, so make sure it is stored (one retry).
+    for (let attempt = 1; ; attempt++) {
+      try {
+        await prisma.donation.update({ where: { id: donation.id }, data: { bkashPaymentId: payment.paymentID } });
+        break;
+      } catch (err) {
+        if (attempt >= 2) throw err;
+      }
+    }
 
     return NextResponse.json({ bkashURL: payment.bkashURL });
   } catch (err) {

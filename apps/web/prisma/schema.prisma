@@ -17,6 +17,8 @@ model ContactSubmission {
   subject   String
   message   String
   createdAt DateTime @default(now())
+
+  @@index([createdAt])
 }
 
 model VolunteerApplication {
@@ -27,12 +29,16 @@ model VolunteerApplication {
   skill     String
   message   String?
   createdAt DateTime @default(now())
+
+  @@index([createdAt])
 }
 
 model NewsletterSubscriber {
   id        String   @id @default(cuid())
   email     String   @unique
   createdAt DateTime @default(now())
+
+  @@index([createdAt])
 }
 
 enum DonationMethod {
@@ -61,4 +67,7 @@ model Donation {
   bkashTrxId     String?
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
+
+  @@index([createdAt])
+  @@index([status, createdAt])
 }

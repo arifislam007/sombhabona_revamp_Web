@@ -46,7 +46,7 @@ export function Press({ t }: { t: Dict }) {
                       aria-hidden="true"
                       className="text-muted-foreground transition-colors group-hover:text-primary"
                     />
-                    <span className="sr-only">(opens in a new tab)</span>
+                    <span className="sr-only">{t.press.newTab}</span>
                   </div>
                 </a>
               </Reveal>

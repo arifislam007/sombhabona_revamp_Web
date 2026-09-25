@@ -13,7 +13,7 @@ const schema = z
       .trim()
       .min(6)
       .max(20)
-      .regex(/^[+\d][\d\s-]*$/, "Invalid phone number"),
+      .regex(/^\+?\d[\d\s-]*$/, "Invalid phone number"),
     skill: z.string().trim().min(1).max(200),
     message: z.string().trim().max(2000).optional(),
   })

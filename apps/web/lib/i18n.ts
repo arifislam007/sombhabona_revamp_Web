@@ -97,6 +97,7 @@ export const T = {
     press: {
       label: "In the Press",
       title: "Covered by the Media",
+      newTab: "(opens in a new tab)",
       sub: "Bangladeshi newspapers have reported on our clothing distributions and Pushpokoli School. Select a clipping to read it in full.",
       items: [
         { outlet: "Samakal", alt: "Samakal newspaper clipping about Sombhabona's Pushpokoli school" },
@@ -276,6 +277,7 @@ export const T = {
     press: {
       label: "গণমাধ্যমে",
       title: "সংবাদমাধ্যমে সম্ভাবনা",
+      newTab: "(নতুন ট্যাবে খুলবে)",
       sub: "আমাদের পোশাক বিতরণ ও পুষ্পকলি স্কুল নিয়ে বাংলাদেশের পত্রিকায় প্রতিবেদন প্রকাশিত হয়েছে। পুরো প্রতিবেদন পড়তে ক্লিপিংয়ে ক্লিক করুন।",
       items: [
         { outlet: "সমকাল", alt: "সম্ভাবনার পুষ্পকলি স্কুল নিয়ে সমকালে প্রকাশিত প্রতিবেদনের ক্লিপিং" },

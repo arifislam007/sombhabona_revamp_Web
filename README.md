@@ -96,6 +96,29 @@ Beyond sombhabona.org itself, the following are sourced from independent press c
 
 The homepage now leads with an interactive "Three Pillars" section (`components/sections/focus-pillars.tsx`) spotlighting Volunteering, Education, and Skill Development with real stats per pillar, and the Programs section has a filter to browse by the same two content pillars (Education / Skill Development).
 
+## Staff admin area (`/admin`)
+
+Read-only lists of donations, contact messages, volunteer applications and newsletter subscribers, with search, date filters (Dhaka time), CSV download, and a "Check pending with bKash" action. It is off unless both of these are set in `.env`:
+
+- `ADMIN_PASSWORD` — the shared staff password (use a long, unique one).
+- `ADMIN_SESSION_SECRET` — 32+ random characters, different from the password (`openssl rand -hex 32`). Changing either value logs everyone out.
+
+The login is limited to 5 wrong attempts per visitor (40 in total) per 15 minutes. Sessions last 8 hours.
+
+## Running behind a reverse proxy
+
+- `WEB_BIND` (default `127.0.0.1`) — the address port 8065 is published on. Only a proxy on the same machine can reach the app; set `0.0.0.0` only if your proxy is on another machine.
+- `TRUSTED_PROXY_HOPS` (default `1`) — how many proxies sit in front of the app (a single nginx = 1; host nginx + the Docker nginx = 2). Used to find the real visitor IP for rate limiting. The proxy must append to `X-Forwarded-For` (`proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;`).
+- Put HSTS and TLS in the outer proxy; the app sets CSP, `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options` and `Permissions-Policy` itself.
+
+## Payments (bKash)
+
+The callback never trusts the browser URL. A donation becomes `COMPLETED` only when bKash confirms the payment, the payment ID matches, and the amount equals what was stored. If bKash cannot be reached the donation stays `PENDING` (donors see a "we are confirming" page) and can be settled later from the admin page. Abandoned checkouts are closed after 24 hours.
+
+## Tests
+
+`npm test` (in `apps/web`) runs unit tests for admin filters/CSV, sessions, IP/rate-limit handling and the bKash callback state machine.
+
 ## Notes / follow-ups
 
 - Bengali translations in `apps/web/lib/i18n.ts` are a best-effort machine/AI translation — have a native speaker review before launch.
